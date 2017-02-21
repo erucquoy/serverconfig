@@ -2,7 +2,11 @@
 Some config, example and demo files for nginx, apache, php, nodejs for speed up your server deployement
 
 # Nginx
-* Basic CDN config
-* Basic HTTP config
-* Basic HTTPS config
-* PHP 7 HTTP redirect to HTTPS config
+## CDN
+* Basic HTTP 
+* Basic HTTPS
+
+## PHP 7
+* Basic HTTP 
+* Basic HTTPS 
+* HTTP redirect to HTTPS
