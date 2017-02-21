@@ -1,0 +1,11 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name cdn.domain.com;
+
+	location / {
+		expires 5d;
+		root /path/to/files/cdn/;
+	}
+}

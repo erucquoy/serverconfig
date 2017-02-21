@@ -1,0 +1,15 @@
+server {
+	listen 443 ssl;
+	listen [::]:443;
+
+	server_name cdn.domain.com;
+
+	# LetsEncrypt path to ssl files
+	ssl_certificate /etc/letsencrypt/live/cdn.mydomain.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/cdn.mydomain.com/privkey.pem;
+
+	location / {
+		expires 5d;
+		root /path/to/files/cdn/;
+	}
+}

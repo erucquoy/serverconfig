@@ -1,0 +1,31 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name domain.com www.domain.com;
+
+	return 301 https://$host$request_uri;
+}
+server {
+	listen 443 ssl;
+	listen [::]:443;
+	keepalive_timeout 70;
+
+	# LetsEncrypt path to files
+	ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+
+	server_name domain.com www.domain.com;
+
+	root "/path/to/web_directory";
+	index index.php;
+
+	access_log /path/to/domain/logs/access_log;
+	error_log /path/to/domain/logs/error_log info;
+
+	location ~ \.php$ {
+		try_files $uri =404;
+		include /etc/nginx/fastcgi.conf;
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+	}
+}
